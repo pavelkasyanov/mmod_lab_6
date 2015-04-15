@@ -13,11 +13,6 @@ namespace Test
         static void Main(string[] args)
         {
             Generator gen = new LinearGenerator(1, 10);
-
-            for (int i = 0; i < 100; i++)
-            {
-                System.Console.WriteLine(gen.Generate());
-            }
         }
     }
 }
