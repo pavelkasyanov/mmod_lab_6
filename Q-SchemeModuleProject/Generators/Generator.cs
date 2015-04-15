@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Q_SchemeModuleProject.Generators
+namespace Q_SchemeModule.Generators
 {
     public abstract class Generator
     {
