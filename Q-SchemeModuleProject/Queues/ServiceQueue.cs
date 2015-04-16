@@ -1,5 +1,4 @@
-﻿
-namespace Q_SchemeModule.Queues
+﻿namespace Q_SchemeModuleProject.Queues
 {
     public class ServiceQueue
     {
@@ -15,17 +14,25 @@ namespace Q_SchemeModule.Queues
 
         public void PushRequest()
         {
-            if (QueueLength > MaxQueueLength) return;
+            if (QueueLength > MaxQueueLength)
+            {
+                return;
+            }
 
             QueueLength++;
         }
 
         public int PopReqest()
         {
-            if (QueueLength <= 0) return -1;
-                
+            if (QueueLength <= 0)
+            {
+                return -1;
+            }
+
             QueueLength--;
-            return 1;
+            {
+                return 1;
+            }
         }
 
         public int GetStatus()
