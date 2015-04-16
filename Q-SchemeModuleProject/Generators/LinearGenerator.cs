@@ -1,7 +1,4 @@
-﻿
-using Q_SchemeModule.Generators;
-
-namespace Q_SchemeModuleProject.Generators
+﻿namespace Q_SchemeModuleProject.Generators
 {
     public class LinearGenerator : Generator
     {
@@ -16,7 +13,7 @@ namespace Q_SchemeModuleProject.Generators
 
         public override double Generate()
         {
-            var t = Min + rnd.NextDouble() * (Max - Min);
+            double t = Min + Rnd.NextDouble() * (Max - Min);
             return t;
         }
     }

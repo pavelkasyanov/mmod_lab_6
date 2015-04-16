@@ -1,5 +1,4 @@
 ﻿using System;
-using Q_SchemeModule.Generators;
 
 namespace Q_SchemeModuleProject.Generators
 {
@@ -9,12 +8,12 @@ namespace Q_SchemeModuleProject.Generators
 
         public ExponentialGenerator(double mean)
         {
-            this.Mean = mean;
+            Mean = mean;
         }
 
         public override double Generate()
         {
-            var t = -Mean * Math.Log(rnd.NextDouble());
+            double t = -Mean * Math.Log(Rnd.NextDouble());
             return t;
         }
     }

@@ -7,7 +7,7 @@
     <ProjectGuid>{1161E8C5-91DA-4AB9-937A-83E35067C296}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Q_SchemeModule</RootNamespace>
+    <RootNamespace>Q_SchemeModuleProject</RootNamespace>
     <AssemblyName>Q-SchemeModuleProject</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

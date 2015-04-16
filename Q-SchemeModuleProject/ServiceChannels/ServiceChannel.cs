@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Q_SchemeModule.Generators;
-using Q_SchemeModuleProject.Generators;
+﻿using Q_SchemeModuleProject.Generators;
 
-namespace Q_SchemeModule.ServiceChannels
+namespace Q_SchemeModuleProject.ServiceChannels
 {
     public class ServiceChannel
     {
@@ -24,7 +18,10 @@ namespace Q_SchemeModule.ServiceChannels
 
         public void SetRequest(double currentTime)
         {
-            if (currentTime <= _checkTime) return;
+            if (currentTime <= _checkTime)
+            {
+                return;
+            }
 
             _handlingTime = _generator.Generate();
             _checkTime = currentTime + _handlingTime;
