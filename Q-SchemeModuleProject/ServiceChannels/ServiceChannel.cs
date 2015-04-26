@@ -9,7 +9,7 @@ namespace Q_SchemeModuleProject.ServiceChannels
         private double _checkTime;
         private double _handlingTime;
 
-        public ServiceChannel(int maxQueueLength, Generator generator)
+        public ServiceChannel(Generator generator)
         {
             _generator = generator;
             _checkTime = 0.0;

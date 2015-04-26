@@ -46,6 +46,7 @@
     <Compile Include="Generators\SimpsonGenerator.cs" />
     <Compile Include="Generators\TriangularGenerator.cs" />
     <Compile Include="Generators\UniformGenerator.cs" />
+    <Compile Include="Phase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queues\ServiceQueue.cs" />
     <Compile Include="ServiceChannels\ServiceChannel.cs" />
