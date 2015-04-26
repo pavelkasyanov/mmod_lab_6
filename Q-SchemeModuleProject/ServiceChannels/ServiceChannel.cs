@@ -47,13 +47,12 @@ namespace Q_SchemeModuleProject.ServiceChannels
         /// </returns>
         public int GetStatus(double currentTime)
         {
-            if (_checkTime == 0.0) { return 1; }
+            //if (_checkTime == 0.0) { return 1; }
 
             if (currentTime > _checkTime && Status == 1) { Status = 2; } 
             else if (currentTime < _checkTime) { Status = 1; }
             else if (currentTime > _checkTime) { Status = 0;}
 
-            //Status = (currentTime < _checkTime ? 1 : 0);
             return Status;
         }
     }

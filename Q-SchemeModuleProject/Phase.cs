@@ -50,10 +50,19 @@ namespace Q_SchemeModuleProject
 
             for (int i = 0; i < ChanelCount; i++)
             {
-                if (SQueue.Pop())
+                if (SQueue.QueueLength == 0) break;
+                
+                bool status = false;
+                if (SChannels[i].GetStatus(currentTime) == 0)
                 {
                     SChannels[i].PushRequest(currentTime);
+                    SQueue.Pop();
+
+                    status = true;
                 }
+
+                //Logger.Write(string.Format("push phase:{0} chanel:{1} time:{2}, status:{3}\n", 
+                //    this._phaseId, i, currentTime, status));
             }
 
             return 0;
@@ -62,6 +71,20 @@ namespace Q_SchemeModuleProject
         public int ChanelStatus(int chanelId, double time)
         {
             return SChannels[chanelId].GetStatus(time);
+        }
+
+        public bool IsStop()
+        {
+            if (SQueue.QueueLength != 0)
+                return false;
+
+            foreach (var chanel in SChannels)
+            {
+                if (chanel.Status != 0)
+                    return false;
+            }
+
+            return true;
         }
     }
 }

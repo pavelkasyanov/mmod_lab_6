@@ -1,4 +1,5 @@
-﻿using Q_SchemeModuleProject.Generators;
+﻿using System;
+using Q_SchemeModuleProject.Generators;
 
 namespace Test
 {
@@ -6,12 +7,14 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            double dt = 1;
+            double dt = 0.01;
             int requesCount = 1000;
 
             var qScheme = new QScheme(dt, requesCount);
 
             qScheme.Start();
+
+            Console.ReadKey();
         }
     }
 }
