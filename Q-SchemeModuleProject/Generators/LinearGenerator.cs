@@ -2,18 +2,18 @@
 {
     public class LinearGenerator : Generator
     {
-        public int Max { get; private set; }
-        public int Min { get; private set; }
+        public int B { get; private set; }
+        public int A { get; private set; }
 
-        public LinearGenerator(int min, int max)
+        public LinearGenerator(int a, int b)
         {
-            Min = min;
-            Max = max;
+            A = a;
+            B = b;
         }
 
         public override double Generate()
         {
-            double t = Min + Rnd.NextDouble() * (Max - Min);
+            double t = A + Rnd.NextDouble() * (B - A);
             return t;
         }
     }
