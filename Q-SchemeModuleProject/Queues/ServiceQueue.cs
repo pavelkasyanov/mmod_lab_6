@@ -6,6 +6,28 @@
 
         public int MaxQueueLength { get; private set; }
 
+        public bool Pop()
+        {
+            if (QueueLength > 0)
+            {
+                --QueueLength;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Push()
+        {
+            if (QueueLength < MaxQueueLength)
+            {
+                QueueLength++;
+                return true;
+            }
+
+            return false;
+        }
+
         public ServiceQueue(int queueLength, int maxQueueLength)
         {
             QueueLength = queueLength;

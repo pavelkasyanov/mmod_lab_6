@@ -6,7 +6,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Generator gen = new LinearGenerator(1, 10);
+            double dt = 1;
+            int requesCount = 1000;
+
+            var qScheme = new QScheme(dt, requesCount);
+
+            qScheme.Start();
         }
     }
 }

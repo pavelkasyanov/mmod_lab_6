@@ -2,7 +2,7 @@
 
 namespace Q_SchemeModuleProject.Generators
 {
-    class ExponentialGenerator : Generator
+    public class ExponentialGenerator : Generator
     {
         public double Mean { get; private set; }
 
