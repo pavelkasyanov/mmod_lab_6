@@ -17,7 +17,9 @@ namespace Q_SchemeModuleProject
 
         public ServiceQueue SQueue;
 
-        private int _phaseId = 0;
+        public int _phaseId = 0;
+
+        public int RequestCheck;
 
         public Phase(int queueLen, int chanelCount, Generator generator, int phaseId)
         {
@@ -30,6 +32,8 @@ namespace Q_SchemeModuleProject
             {
                 SChannels[i] = new ServiceChannel(generator);
             }
+
+            RequestCheck = 0;
         }
 
         public double Run(double currentTime, Phase previousPhase)
@@ -58,6 +62,7 @@ namespace Q_SchemeModuleProject
                     SChannels[i].PushRequest(currentTime);
                     SQueue.Pop();
 
+                    RequestCheck += 1;
                     status = true;
                 }
 

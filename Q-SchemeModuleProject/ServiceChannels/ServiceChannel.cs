@@ -1,4 +1,5 @@
-﻿using Q_SchemeModuleProject.Generators;
+﻿using System;
+using Q_SchemeModuleProject.Generators;
 
 namespace Q_SchemeModuleProject.ServiceChannels
 {
@@ -6,54 +7,46 @@ namespace Q_SchemeModuleProject.ServiceChannels
     {
         private readonly Generator _generator;
 
-        private double _checkTime;
+        public double CheckTime { get; set; }
         private double _handlingTime;
+
+        private readonly double EPS = 0.0000000000000000000000001;
 
         /// <summary>
         /// Status = 0 - свододен
         /// Status = 1 - обрабатывает заявку
         /// Status = 2 - не может передать завку дальше 
         /// </summary>
-        public int Status { get; set; }
+        public int Status;
 
         public ServiceChannel(Generator generator)
         {
             _generator = generator;
-            _checkTime = 0.0;
+            CheckTime = 0.0;
             _handlingTime = 0.0;
             Status = 0;
         }
 
         public void PushRequest(double currentTime)
         {
-            if (currentTime <= _checkTime)
-            {
-                return;
-            }
-
             _handlingTime = _generator.Generate();
-            _checkTime = currentTime + _handlingTime;
+            CheckTime = currentTime + _handlingTime;
             
             Status = 1;
         }
 
 
-        /// <summary>
-        /// Проверка статуса Канала 
-        /// </summary>
-        /// <returns>
-        ///      1 : канал занят
-        ///      0 : канал свободен
-        /// </returns>
         public int GetStatus(double currentTime)
         {
-            //if (_checkTime == 0.0) { return 1; }
+            if (currentTime > CheckTime && Status == 1)
+            {
+                //this.Status = 2;
+                return 2;
+            }
+            //else if (currentTime < CheckTime) { Status = 1;}
+            //else if (currentTime > CheckTime) { Status = 0;}
 
-            if (currentTime > _checkTime && Status == 1) { Status = 2; } 
-            else if (currentTime < _checkTime) { Status = 1; }
-            else if (currentTime > _checkTime) { Status = 0;}
-
-            return Status;
+            return this.Status;
         }
     }
 }

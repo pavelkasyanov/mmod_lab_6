@@ -34,29 +34,6 @@
             MaxQueueLength = maxQueueLength;
         }
 
-        public void PushRequest()
-        {
-            if (QueueLength > MaxQueueLength)
-            {
-                return;
-            }
-
-            QueueLength++;
-        }
-
-        public int PopReqest()
-        {
-            if (QueueLength <= 0)
-            {
-                return -1;
-            }
-
-            QueueLength--;
-            {
-                return 1;
-            }
-        }
-
         public int GetStatus()
         {
             return (QueueLength > MaxQueueLength ? -1 : 0);
