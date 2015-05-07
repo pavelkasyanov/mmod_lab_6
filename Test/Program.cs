@@ -7,14 +7,14 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            double dt = 0.01;
-            int requesCount = 1000;
+            //double dt = 0.01;
+            //int requesCount = 1000;
 
-            var qScheme = new QScheme(dt, requesCount);
+            //var qScheme = new QScheme(dt, requesCount);
 
-            qScheme.Start();
+            //qScheme.Start();
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }

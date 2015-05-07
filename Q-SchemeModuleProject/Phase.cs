@@ -55,15 +55,13 @@ namespace Q_SchemeModuleProject
             for (int i = 0; i < ChanelCount; i++)
             {
                 if (SQueue.QueueLength == 0) break;
-                
-                bool status = false;
+
                 if (SChannels[i].GetStatus(currentTime) == 0)
                 {
                     SChannels[i].PushRequest(currentTime);
                     SQueue.Pop();
 
                     RequestCheck += 1;
-                    status = true;
                 }
 
                 //Logger.Write(string.Format("push phase:{0} chanel:{1} time:{2}, status:{3}\n", 

@@ -10,7 +10,11 @@ namespace Q_SchemeModuleProject.ServiceChannels
         public double CheckTime { get; set; }
         private double _handlingTime;
 
-        private readonly double EPS = 0.0000000000000000000000001;
+        public int CheckedRequests;
+
+        public double AllServiceTime;
+
+        private Request _request;
 
         /// <summary>
         /// Status = 0 - свододен
@@ -25,6 +29,8 @@ namespace Q_SchemeModuleProject.ServiceChannels
             CheckTime = 0.0;
             _handlingTime = 0.0;
             Status = 0;
+            CheckedRequests = 0;
+            AllServiceTime = 0;
         }
 
         public void PushRequest(double currentTime)
@@ -33,20 +39,34 @@ namespace Q_SchemeModuleProject.ServiceChannels
             CheckTime = currentTime + _handlingTime;
             
             Status = 1;
-        }
 
+            //CheckedRequests += 1;
+
+            AllServiceTime += _handlingTime;
+        }
 
         public int GetStatus(double currentTime)
         {
             if (currentTime > CheckTime && Status == 1)
             {
-                //this.Status = 2;
                 return 2;
             }
-            //else if (currentTime < CheckTime) { Status = 1;}
-            //else if (currentTime > CheckTime) { Status = 0;}
-
             return this.Status;
+        }
+
+        public void PushRequest(Request request)
+        {
+            _request = request;
+            _request.ServiceTime += _handlingTime;
+
+            CheckedRequests += 1;
+        }
+
+        public Request PopRequest()
+        {
+            //CheckedRequests += 1;
+
+            return _request;
         }
     }
 }
